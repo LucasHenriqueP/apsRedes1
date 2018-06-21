@@ -2,7 +2,7 @@
 ## RAW socket para criar pacotes ARP, IP e UDP.
 
 
-Para compilar: gcc redes1 -o redes -w
+Para compilar: gcc redes -o redes -w
 
 Para executar tenha privilégios __root__  
 Como usar: ./redes seuip seuMac ipAlvo  
