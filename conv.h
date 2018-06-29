@@ -170,5 +170,61 @@ int* getMac(char* mac){
 
 }
 
+int* getPort(char* str){
+
+  if(strlen(str) == 1){
+    str[3] = str[0];
+    str[0] = '0';
+    str[1] = '0';
+    str[2] = '0';
+    str[4] = '\0';
+  }
+  else if(strlen(str) == 2){
+    str[3] = str[1];
+    str[2] = str[0];
+    str[0] = '0';
+    str[1] = '0';
+    str[4] = '\0';
+  }
+  else if(strlen(str) == 3){
+    str[3] = str[2];
+    str[2] = str[1];
+    str[1] = str[0];
+    str[0] = '0';
+    str[4] = '\0';
+  }
+  int i, t, res;
+  int ac = 0;
+  t = strlen(str);
+  for(i = 0; i<t; i++){
+    res = tabela(str[i]);
+
+    switch (i) {
+      case 0:
+        ac += res*1000;
+        break;
+      case 1:
+        ac += res*100;
+        break;
+      case 2:
+        ac += res*10;
+        break;
+      case 3:
+        ac += res*1;
+        break;
+      default:
+        break;
+    }
+  }
+    int* vet = (int*) calloc(2, sizeof(int));
+    vet[0] = ac>>8;
+    //printf("\n%x\n", vet[0]);
+    int mascara = 255;
+    vet[1] = ac&mascara;
+    return vet;
+
+
+}
+
 
 #endif
